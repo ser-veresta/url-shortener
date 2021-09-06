@@ -66,7 +66,7 @@ const Shortener = () => {
   const [shortUrl, setShortUrl] = useState("");
   const matches = useMediaQuery("(min-width:800px)");
 
-  const handleSubmit = async () => {
+  const handleSubmit = async ({ getUser, getUrls }) => {
     try {
       const { data } = await axios.post(
         "https://url-shortener-02.herokuapp.com/api/v1/shorten",
@@ -79,6 +79,8 @@ const Shortener = () => {
       );
 
       setShortUrl(data.data);
+      getUser();
+      getUrls();
     } catch (error) {
       console.log(error.response.data);
     }

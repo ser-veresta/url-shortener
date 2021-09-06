@@ -16,43 +16,43 @@ const Url = () => {
 
   const [selectedTab, setSelectedTab] = useState(TabIndex.indexOf(tab));
 
+  const getUser = async () => {
+    try {
+      const { data } = await axios.get("https://url-shortener-02.herokuapp.com/api/v1/auth/getUser", {
+        headers: {
+          authorization: localStorage.getItem("token"),
+        },
+      });
+      setUser(data.data);
+    } catch (error) {
+      console.log(error.response.data);
+      if (!error.response.data.success) {
+        history.push("/Login");
+      }
+    }
+  };
+
+  const getUrls = async () => {
+    try {
+      const { data } = await axios.get("https://url-shortener-02.herokuapp.com/api/v1/shorten/user", {
+        headers: {
+          authorization: localStorage.getItem("token"),
+        },
+      });
+
+      setUserData(data.data);
+    } catch (error) {
+      console.log(error.response.data || error);
+    }
+  };
+
   useEffect(() => {
     if (!localStorage.getItem("token")) {
       history.push("/Login");
     }
-    const getUser = async () => {
-      try {
-        const { data } = await axios.get("https://url-shortener-02.herokuapp.com/api/v1/auth/getUser", {
-          headers: {
-            authorization: localStorage.getItem("token"),
-          },
-        });
-        setUser(data.data);
-      } catch (error) {
-        console.log(error.response.data);
-        if (!error.response.data.success) {
-          history.push("/Login");
-        }
-      }
-    };
-
     getUser();
-
-    const getUrls = async () => {
-      try {
-        const { data } = await axios.get("https://url-shortener-02.herokuapp.com/api/v1/shorten/user", {
-          headers: {
-            authorization: localStorage.getItem("token"),
-          },
-        });
-
-        setUserData(data.data);
-      } catch (error) {
-        console.log(error.response.data || error);
-      }
-    };
-
     getUrls();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [history]);
 
   return (
@@ -65,7 +65,7 @@ const Url = () => {
         TabIndex={TabIndex}
       />
       {selectedTab === 0 && <Count dayCount={userData?.dayCount} monthCount={userData?.monthCount} />}
-      {selectedTab === 1 && <Shortener />}
+      {selectedTab === 1 && <Shortener getUser={getUser} getUrls={getUrls} />}
       {selectedTab === 2 && <TableComp urls={userData?.urls} />}
     </>
   );
