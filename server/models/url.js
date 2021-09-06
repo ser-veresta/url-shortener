@@ -25,7 +25,7 @@ urlSchema.pre("save", async function (next) {
 
   const code = crypto.randomBytes(5).toString("hex");
   this.urlCode = code;
-  this.shortUrl = `http://localhost:5000/${code}`;
+  this.shortUrl = `https://url-shortener-02.herokuapp.com/${code}`;
 
   next();
 });
