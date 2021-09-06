@@ -14,7 +14,7 @@ export const signUp = async (req, res, next) => {
     });
     await user.save();
 
-    const activeUrl = `http://localhost:3000/Login/${user._id}`;
+    const activeUrl = `${process.env.CLIENT_URI}/Login/${user._id}`;
 
     const message = `
     <h1>Hi ${username},</h1>
@@ -111,7 +111,7 @@ export const forgotPassword = async (req, res, next) => {
 
     await user.save();
 
-    const resetUrl = `http://localhost:3000/ResetPassword/${resetToken}`;
+    const resetUrl = `${process.env.CLIENT_URI}/ResetPassword/${resetToken}`;
 
     const message = `
     <h1>You have requested a password reset</h1>

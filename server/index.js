@@ -12,7 +12,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-const MONGO_URI = "mongodb+srv://gopal:1213@cluster0.azvtw.mongodb.net/nodeAuthData";
+const MONGO_URI = process.env.MONGO_URI;
 const PORT = process.env.PORT || 5000;
 
 app.get("/:urlCode", redirectUrl);

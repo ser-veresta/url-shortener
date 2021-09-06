@@ -2,15 +2,15 @@ import nodemailer from "nodemailer";
 
 const sendEmail = (options) => {
   const transporter = nodemailer.createTransport({
-    service: "SendGrid",
+    service: process.env.SERVICE,
     auth: {
-      user: "apikey",
-      pass: "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",
+      user: process.env.USERNAME,
+      pass: process.env.PASSWORD,
     },
   });
 
   const mailOptions = {
-    from: "subramaniang573@gmail.com",
+    from: process.env.EMAIL_FROM,
     to: options.to,
     subject: options.subject,
     html: options.text,

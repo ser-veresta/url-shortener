@@ -12,7 +12,7 @@ export const protect = async (req, res, next) => {
   if (!token) return next(new ErrorResponse("Not Authorized", 401));
 
   try {
-    const { id } = jwt.verify(token, "123123123");
+    const { id } = jwt.verify(token, process.env.JWT_SECRET);
 
     const user = await Users.findById(id);
 
