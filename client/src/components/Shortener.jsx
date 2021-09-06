@@ -69,7 +69,7 @@ const Shortener = () => {
   const handleSubmit = async () => {
     try {
       const { data } = await axios.post(
-        "http://localhost:5000/api/v1/shorten",
+        "https://url-shortener-02.herokuapp.com/api/v1/shorten",
         { longUrl: url },
         {
           headers: {

@@ -71,7 +71,7 @@ const ForgotPassword = () => {
       return;
     }
     try {
-      const { data } = await axios.post("http://localhost:5000/api/v1/auth/forgotPassword", { email });
+      const { data } = await axios.post("https://url-shortener-02.herokuapp.com/api/v1/auth/forgotPassword", { email });
 
       enqueueSnackbar(data.message, {
         variant: "success",

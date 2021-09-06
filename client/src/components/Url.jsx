@@ -22,7 +22,7 @@ const Url = () => {
     }
     const getUser = async () => {
       try {
-        const { data } = await axios.get("http://localhost:5000/api/v1/auth/getUser", {
+        const { data } = await axios.get("https://url-shortener-02.herokuapp.com/api/v1/auth/getUser", {
           headers: {
             authorization: localStorage.getItem("token"),
           },
@@ -40,7 +40,7 @@ const Url = () => {
 
     const getUrls = async () => {
       try {
-        const { data } = await axios.get("http://localhost:5000/api/v1/shorten/user", {
+        const { data } = await axios.get("https://url-shortener-02.herokuapp.com/api/v1/shorten/user", {
           headers: {
             authorization: localStorage.getItem("token"),
           },

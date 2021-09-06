@@ -74,6 +74,7 @@ const Home = () => {
             <Button
               color="primary"
               className={classes.btn}
+              onClick={() => history.push("/Url")}
               variant="contained"
               size={matches ? "large" : "medium"}
               endIcon={<ArrowForward />}

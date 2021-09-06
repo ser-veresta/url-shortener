@@ -74,7 +74,9 @@ const Login = () => {
   useEffect(() => {
     const activation = async () => {
       try {
-        const { data } = await axios.get(`http://localhost:5000/api/v1/auth/activate/${activationToken}`);
+        const { data } = await axios.get(
+          `https://url-shortener-02.herokuapp.com/api/v1/auth/activate/${activationToken}`
+        );
 
         enqueueSnackbar(data.message, {
           variant: "success",

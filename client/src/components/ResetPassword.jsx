@@ -78,7 +78,7 @@ const ResetPassword = () => {
   const handleSubmit = async (values) => {
     try {
       const { data } = await axios.patch(
-        resetToken && `http://localhost:5000/api/v1/auth/resetPassword/${resetToken}`,
+        resetToken && `https://url-shortener-02.herokuapp.com/api/v1/auth/resetPassword/${resetToken}`,
         {
           password: values.password,
         }
