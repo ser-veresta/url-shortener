@@ -1,10 +1,22 @@
-import { Container, Paper, TextField, makeStyles, Grid, Button, Typography, Box, Link } from "@material-ui/core";
-import { Link as RouterLink } from "react-router-dom";
+import {
+  Container,
+  Paper,
+  TextField,
+  makeStyles,
+  Grid,
+  Button,
+  Typography,
+  Box,
+  Link,
+  IconButton,
+} from "@material-ui/core";
+import { Link as RouterLink, useHistory } from "react-router-dom";
 import * as yup from "yup";
 import { useFormik } from "formik";
 import { ReactComponent as SignUpSvg } from "../images/Sign_in.svg";
 import { useSnackbar } from "notistack";
 import axios from "axios";
+import { ArrowBack } from "@material-ui/icons";
 
 const useStyles = makeStyles((theme) => ({
   page: {
@@ -75,6 +87,7 @@ const validationSchema = yup.object({
 const SignUp = () => {
   const classes = useStyles();
   const { enqueueSnackbar } = useSnackbar();
+  const history = useHistory();
 
   const handleSubmit = async (values) => {
     try {
@@ -108,6 +121,9 @@ const SignUp = () => {
     <Box className={classes.page}>
       <Container maxWidth="md">
         <Paper elevation={4} className={classes.container}>
+          <IconButton onClick={() => history.goBack()}>
+            <ArrowBack />
+          </IconButton>
           <Typography color="textSecondary" className={classes.title} variant="h3">
             Sign Up
           </Typography>

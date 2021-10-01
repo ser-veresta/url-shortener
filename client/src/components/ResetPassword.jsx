@@ -1,11 +1,23 @@
-import { Container, Paper, TextField, makeStyles, Grid, Button, Typography, Link, Box } from "@material-ui/core";
+import {
+  Container,
+  Paper,
+  TextField,
+  makeStyles,
+  Grid,
+  Button,
+  Typography,
+  Link,
+  Box,
+  IconButton,
+} from "@material-ui/core";
 import * as yup from "yup";
 import { useFormik } from "formik";
 import { ReactComponent as SignUpSvg } from "../images/Sign_in.svg";
 import { useSnackbar } from "notistack";
 import axios from "axios";
-import { useParams } from "react-router";
+import { useHistory, useParams } from "react-router";
 import { Link as RouterLink } from "react-router-dom";
+import { ArrowBack } from "@material-ui/icons";
 
 const useStyles = makeStyles((theme) => ({
   page: {
@@ -74,6 +86,7 @@ const ResetPassword = () => {
   const { resetToken } = useParams();
   const classes = useStyles();
   const { enqueueSnackbar } = useSnackbar();
+  const history = useHistory();
 
   const handleSubmit = async (values) => {
     try {
@@ -106,6 +119,9 @@ const ResetPassword = () => {
     <Box className={classes.page}>
       <Container maxWidth="md">
         <Paper elevation={4} className={classes.container}>
+          <IconButton onClick={() => history.push("/")}>
+            <ArrowBack />
+          </IconButton>
           <Typography color="textSecondary" className={classes.title} variant="h3">
             Reset Password
           </Typography>

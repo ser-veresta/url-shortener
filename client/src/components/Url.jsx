@@ -27,7 +27,8 @@ const Url = () => {
     } catch (error) {
       console.log(error.response.data);
       if (!error.response.data.success) {
-        history.push("/Login");
+        history.push("/");
+        localStorage.clear("token");
       }
     }
   };

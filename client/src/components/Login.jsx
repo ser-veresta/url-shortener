@@ -1,4 +1,16 @@
-import { Container, Paper, TextField, makeStyles, Grid, Button, Typography, Box, Link } from "@material-ui/core";
+import {
+  Container,
+  Paper,
+  TextField,
+  makeStyles,
+  Grid,
+  Button,
+  Typography,
+  Box,
+  Link,
+  IconButton,
+} from "@material-ui/core";
+import { ArrowBack } from "@material-ui/icons";
 import * as yup from "yup";
 import { useFormik } from "formik";
 import { ReactComponent as LoginSvg } from "../images/Login.svg";
@@ -122,6 +134,9 @@ const Login = () => {
     <Box className={classes.page}>
       <Container maxWidth="md">
         <Paper elevation={4} className={classes.container}>
+          <IconButton onClick={() => history.goBack()}>
+            <ArrowBack />
+          </IconButton>
           <Typography color="textSecondary" className={classes.title} variant="h3">
             Login
           </Typography>

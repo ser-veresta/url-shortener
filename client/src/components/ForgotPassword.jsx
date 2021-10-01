@@ -1,8 +1,20 @@
-import { Box, Button, Container, Grid, Link, makeStyles, Paper, TextField, Typography } from "@material-ui/core";
+import {
+  Box,
+  Button,
+  Container,
+  Grid,
+  IconButton,
+  Link,
+  makeStyles,
+  Paper,
+  TextField,
+  Typography,
+} from "@material-ui/core";
+import { ArrowBack } from "@material-ui/icons";
 import axios from "axios";
 import { useSnackbar } from "notistack";
 import { useState } from "react";
-import { Link as RouterLink } from "react-router-dom";
+import { Link as RouterLink, useHistory } from "react-router-dom";
 import { ReactComponent as ForgotPasswordSVG } from "../images/Forgot_password.svg";
 
 const useStyles = makeStyles((theme) => ({
@@ -63,6 +75,7 @@ const ForgotPassword = () => {
   const [email, setEmail] = useState("");
   const [error, setError] = useState(false);
   const { enqueueSnackbar } = useSnackbar();
+  const history = useHistory();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -89,6 +102,9 @@ const ForgotPassword = () => {
     <Box className={classes.page}>
       <Container maxWidth="md">
         <Paper elevation={4} className={classes.container}>
+          <IconButton onClick={() => history.goBack()}>
+            <ArrowBack />
+          </IconButton>
           <Typography color="textSecondary" className={classes.title} variant="h3">
             Forgot Password
           </Typography>
