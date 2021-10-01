@@ -134,7 +134,7 @@ const Login = () => {
     <Box className={classes.page}>
       <Container maxWidth="md">
         <Paper elevation={4} className={classes.container}>
-          <IconButton onClick={() => history.goBack()}>
+          <IconButton onClick={() => history.push("/")}>
             <ArrowBack />
           </IconButton>
           <Typography color="textSecondary" className={classes.title} variant="h3">
