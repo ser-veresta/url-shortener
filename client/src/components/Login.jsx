@@ -70,6 +70,12 @@ const useStyles = makeStyles((theme) => ({
   options: {
     marginLeft: theme.spacing(3),
   },
+  test: {
+    marginTop: 10,
+    borderRadius: 5,
+    padding: 5,
+    background: "lightgray",
+  },
 }));
 
 const validationSchema = yup.object({
@@ -145,6 +151,11 @@ const Login = () => {
               <LoginSvg className={classes.img} />
             </Grid>
             <Grid sm={12} md={6} item>
+              <Box className={classes.test}>
+                <Typography>Test User</Typography>
+                <Typography>username: wardeath202@gmail.com</Typography>
+                <Typography>password: serveresta</Typography>
+              </Box>
               <form className={classes.form} onSubmit={formik.handleSubmit} noValidate autoComplete="off">
                 <TextField
                   required
