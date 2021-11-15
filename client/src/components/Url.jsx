@@ -66,8 +66,8 @@ const Url = () => {
         TabIndex={TabIndex}
       />
       {selectedTab === 0 && <Count dayCount={userData?.dayCount} monthCount={userData?.monthCount} />}
-      {selectedTab === 1 && <Shortener />}
-      {selectedTab === 2 && <TableComp urls={userData?.urls} />}
+      {selectedTab === 1 && <Shortener getUrls={getUrls} />}
+      {selectedTab === 2 && <TableComp urls={userData?.urls} getUrl={getUrls} />}
     </>
   );
 };

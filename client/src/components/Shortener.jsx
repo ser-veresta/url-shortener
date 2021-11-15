@@ -60,7 +60,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Shortener = () => {
+const Shortener = ({ getUrls }) => {
   const classes = useStyles();
   const [url, setUrl] = useState("");
   const [shortUrl, setShortUrl] = useState("");
@@ -79,6 +79,7 @@ const Shortener = () => {
       );
 
       setShortUrl(data.data);
+      getUrls();
     } catch (error) {
       console.log(error.response.data);
     }
@@ -93,7 +94,7 @@ const Shortener = () => {
           item
           direction={matches ? "row" : "column"}
           justifyContent="center"
-          alignItems={matches ? "center" : "strech"}
+          alignItems={matches ? "center" : "stretch"}
         >
           <Grid md={12} item>
             <Paper elevation={4} className={classes.paper}>

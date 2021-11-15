@@ -8,6 +8,7 @@ import {
   Paper,
   makeStyles,
   useMediaQuery,
+  Link,
 } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
@@ -16,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const TableComp = ({ urls = [] }) => {
+const TableComp = ({ urls = [], getUrl }) => {
   const classes = useStyles();
   const matches = useMediaQuery("(min-width:800px)");
 
@@ -37,8 +38,16 @@ const TableComp = ({ urls = [] }) => {
           {urls.map((ele, i) => (
             <TableRow key={ele._id}>
               <TableCell>{i + 1}</TableCell>
-              <TableCell>{ele.longUrl}</TableCell>
-              <TableCell>{ele.shortUrl}</TableCell>
+              <TableCell>
+                <Link href={ele.longUrl} target="_blank" rel="noreferrer">
+                  {ele.longUrl}
+                </Link>
+              </TableCell>
+              <TableCell>
+                <Link onClick={() => getUrl()} href={ele.shortUrl} target="_blank" rel="noreferrer">
+                  {ele.shortUrl}
+                </Link>
+              </TableCell>
               <TableCell>{ele.date.split(" ").join("-")}</TableCell>
               <TableCell>{ele.createdBy}</TableCell>
               <TableCell>{ele.count}</TableCell>
